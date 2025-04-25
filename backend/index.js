@@ -2,6 +2,7 @@ const express=require('express')
 const app=express()
 const cors=require('cors')
 const bodyParser=require('body-parser')
+const authrouter=require('./Routes/auth.js')
 require('./Models/db')
 require('dotenv').config()
 const port=process.env.PORT || 8080;
@@ -13,3 +14,4 @@ app.listen(port,()=>{
 app.get('/ping',(req,res)=>{
     res.send('pinged ;)')
 })
+app.use('/auth',authrouter)
