@@ -4,9 +4,11 @@ const router=require('express').Router()
 const UserModel=require('../Models/diary.js')
 const bcrypt=require('bcrypt')
 const jwt=require('jsonwebtoken')
+const {signupValidation}=require('../Middlewares/validation.js')
+const {loginValidation}=require('../Middlewares/validation.js')
 // define routes from /auth
 
-router.post('/signup',async (req,res)=>{
+router.post('/signup',signupValidation,async (req,res)=>{
     try{
         const {name,email,password}=req.body
         const user=await UserModel.findOne({email})
@@ -23,7 +25,7 @@ router.post('/signup',async (req,res)=>{
         res.status(500).json({message: 'internal server error',success:false})
     }
 })
-router.post('/login',async (req,res)=>{
+router.post('/login',loginValidation,async (req,res)=>{
     const {email,password}=req.body
     const user=await UserModel.findOne({email})
     
