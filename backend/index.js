@@ -15,3 +15,4 @@ app.get('/ping',(req,res)=>{
     res.send('pinged ;)')
 })
 app.use('/auth',authrouter)
+app.use('/entries',entriesrouter)

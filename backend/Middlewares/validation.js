@@ -1,3 +1,4 @@
+//auth validation
 const joi=require("joi")
 const signupValidation=(req,res,next)=>{
     const schema=joi.object({
