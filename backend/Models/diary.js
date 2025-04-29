@@ -31,4 +31,4 @@ const userschema=new Schema({
     entries: [entryschema]
 })
 const UserModel=mongoose.model('User',userschema)
-module.exports=UserModel
+module.exports={ UserModel }
