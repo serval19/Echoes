@@ -33,4 +33,19 @@ router.post('/',verifyToken,async (req,res)=>{
         return res.status(500).json({message: err.message})
     }
 })
+router.get('/',verifyToken,async (req,res)=>{
+    try{
+        const userid=req.user._id
+        const entries=await UserModel.findById(userid)
+        if(!entries.entries){
+            return res.status(404).json({message: 'No entries found',success: false
+            })
+        }
+        return res.status(200).json({message: 'entries found',success: true,entries: entries.entries})
+    }
+    catch(err){
+        console.log(err.message)
+        return res.status(500).json({message: err.message,success: false})
+    }
+})
 module.exports=router

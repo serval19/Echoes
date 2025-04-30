@@ -1,7 +1,7 @@
 const express=require('express')
 require('dotenv').config()
 const router=require('express').Router()
-const UserModel=require('../Models/diary.js')
+const { UserModel }=require('../Models/diary.js')
 const bcrypt=require('bcrypt')
 const jwt=require('jsonwebtoken')
 const {signupValidation}=require('../Middlewares/validation.js')
