@@ -33,11 +33,12 @@ router.post('/',verifyToken,async (req,res)=>{
         return res.status(500).json({message: err.message})
     }
 })
+
 router.get('/',verifyToken,async (req,res)=>{
     try{
         const userid=req.user._id
         const entries=await UserModel.findById(userid)
-        if(!entries.entries){
+        if(!entries.entries || entries.entries.length===0){
             return res.status(404).json({message: 'No entries found',success: false
             })
         }
@@ -48,4 +49,28 @@ router.get('/',verifyToken,async (req,res)=>{
         return res.status(500).json({message: err.message,success: false})
     }
 })
+router.get('/:entryid',verifyToken,async (req,res)=>{
+    try{
+        const userid=req.user._id
+        const entryid=req.params.entryid
+        const entries=await UserModel.findById(userid)
+        if(!entries.entries || entries.entries.length===0){
+            return res.status(404).json({message: 'No entries found',success: false})
+        }
+        const entry=entries.entries.find((entry)=>entry._id.toString()===entryid)
+        if(!entry){
+            return res.status(404).json({message: 'No entry found',success:false
+            })
+        }
+        
+        return res.status(200).json({message: 'entry found',success:true,entry: entry})
+
+    }
+    catch(err){
+        console.log(err.message)
+        return res.status(500).json({message: err.message,success:false})
+
+    }
+})
+
 module.exports=router
