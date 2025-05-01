@@ -72,5 +72,31 @@ router.get('/:entryid',verifyToken,async (req,res)=>{
 
     }
 })
+router.delete('/:entryid',verifyToken,async (req,res)=>{
+    try{
+        const userid=req.user._id
+        const entryid=req.params.entryid
+        const updateduser=await UserModel.findByIdAndUpdate(
+            userid,
+            {
+                $pull :{ 
+                    entries:{
+                        _id: entryid
+                    }
+
+                }
+            }
+        )
+        if(!updateduser){
+            return res.status(404).json({message: 'No entry found',success: false})
+        }
+        return res.status(200).json({message: 'entry deleted successfully',success: true})
+    }
+    catch(err){
+        console.log(err.message)
+        return res.status(500).json({message: err.message,success: false})
+
+    }
+})
 
 module.exports=router
