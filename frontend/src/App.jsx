@@ -1,13 +1,9 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-
 import { Routes,Route, Navigate } from 'react-router-dom'
-import Login from './pages/login'
-import Signup from './pages/signup'
-import Home from './pages/home'
-import Addentry from './pages/addentry'
-import Viewentry from './pages/viewentry'
+import Login from './pages/Login'
+import Signup from './pages/Signup'
+import Home from './pages/Home'
+import Addentry from './pages/Addentry'
+import Viewentry from './pages/Viewentry'
 
 function App() {
   
@@ -16,7 +12,7 @@ function App() {
     <div className="App">
       <Routes>
         <Route path="/" element={<Navigate
-          to="/login"/>
+          to="/Login"/>
         } />
         <Route path="/login" element={<Login/>} />
 
