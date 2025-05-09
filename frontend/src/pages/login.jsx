@@ -1,7 +1,36 @@
 import React from 'react'
 import doodleart from '../assets/doodleart.jpg'
+import { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
+import axios from 'axios'
 
 function Login() {
+  const navigate=useNavigate()
+  const [email,setEmail]=useState('')
+  const [password,setPassword]=useState('')
+  const handleLogin=()=>{
+    const data={
+      email,
+      password
+    }
+    axios.post('http://localhost:8080/auth/login',data)
+    
+    .then((response)=>{
+      console.log('login successful')
+      console.log(response.data)
+      localStorage.setItem('jwtToken',response.data.jwtToken)
+      localStorage.setItem('name',response.data.name)
+      
+      navigate('/home')
+      
+      
+    })
+    .catch((error)=>{
+      console.log(error.response.data.message)
+    })
+    
+  }
+
   return (
     <>
      <div className='bg-black'><span className='font-serif text-white pl-4 text-3xl'>Echoes</span></div>
@@ -25,15 +54,15 @@ function Login() {
       <div>
         <label className='text-black text-xl'>Email</label>
         <br/>
-        <input type='text' className='border-2 border-black rounded-xl w-70 h-10 bg-white pl-3'/>
+        <input type='text' onChange={(e)=>setEmail(e.target.value)} className='border-2 border-black rounded-xl w-70 h-10 bg-white pl-3'/>
       </div>
       <div>
         <label className='text-black text-xl'>Password</label>
         <br/>
-        <input type='password' className='border-2 border-black rounded-xl w-70 h-10 bg-white pl-3'/>
+        <input type='password' onChange={(e)=>setPassword(e.target.value)} className='border-2 border-black rounded-xl w-70 h-10 bg-white pl-3'/>
       </div>
       <div>
-        <button className='bg-blue-700 text-white text-2xl py-3 px-7 mt-4 rounded-2xl hover:bg-blue-500'>Login</button>
+        <button className='bg-blue-700 text-white text-2xl py-3 px-7 mt-4 rounded-2xl hover:bg-blue-500' onClick={handleLogin}>Login</button>
       </div>
       <div className='text-black text-10 mt-4'>Don't have an account?</div>
       <div><a href='/signup' className='text-blue-700 text-10 underline'>Signup</a></div>
