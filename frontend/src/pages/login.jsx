@@ -3,12 +3,17 @@ import doodleart from '../assets/doodleart.jpg'
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import axios from 'axios'
+import { successmsg,errormsg  } from '../components/notification'
+import { ToastContainer } from 'react-toastify'
 
 function Login() {
   const navigate=useNavigate()
   const [email,setEmail]=useState('')
   const [password,setPassword]=useState('')
   const handleLogin=()=>{
+    if(!email || !password){
+      return errormsg('Please fill all the fields')
+    }
     const data={
       email,
       password
@@ -16,17 +21,21 @@ function Login() {
     axios.post('http://localhost:8080/auth/login',data)
     
     .then((response)=>{
+      successmsg('login successful!')
       console.log('login successful')
       console.log(response.data)
       localStorage.setItem('jwtToken',response.data.jwtToken)
       localStorage.setItem('name',response.data.name)
+      setTimeout(()=>{
+        navigate('/home')
+      },1000)
       
-      navigate('/home')
       
       
     })
     .catch((error)=>{
       console.log(error.response.data.message)
+      errormsg(error.response.data.message)
     })
     
   }
@@ -74,7 +83,7 @@ function Login() {
 
 
 
-
+    <ToastContainer/>
      </div>
      
     </>
