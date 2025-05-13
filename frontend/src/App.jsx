@@ -4,6 +4,7 @@ import Signup from './pages/Signup'
 import Home from './pages/Home'
 import Addentry from './pages/Addentry'
 import Viewentry from './pages/Viewentry'
+import PrivateRoute  from './PrivateRoute'
 
 function App() {
   
@@ -17,9 +18,9 @@ function App() {
         <Route path="/login" element={<Login/>} />
 
         <Route path="/signup" element={<Signup/>} />
-        <Route path="/home" element={<Home/>} />
-        <Route path="/addentry" element={<Addentry/>} />
-        <Route path="/viewentry" element={<Viewentry/>} />
+        <Route path="/home" element={<PrivateRoute><Home /></PrivateRoute>} />
+        <Route path="/addentry" element={<PrivateRoute><Addentry /></PrivateRoute>} />
+        <Route path="/viewentry" element={<PrivateRoute><Viewentry /></PrivateRoute>} />
       </Routes>
     </div>
     
