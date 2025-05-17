@@ -2,9 +2,10 @@ import React from 'react'
 import { useState,useEffect } from 'react'
 import doodleart from '../assets/doodleart.jpg'
 import { successmsg } from '../components/notification'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate,Link } from 'react-router-dom'
 import axios from 'axios'
 import { ClimbingBoxLoader } from "react-spinners";
+import { MdOutlineAddBox } from 'react-icons/md'
 
 
 function Home() {
@@ -54,7 +55,16 @@ function Home() {
     <div>
 
     </div>
-    { loading ?  <ClimbingBoxLoader color="#000000" size={20} className="mx-auto mt-20" /> : <div>Loaded</div>}
+    { loading ?  <ClimbingBoxLoader color="#000000" size={20} className="mx-auto mt-20" /> : 
+    <div className='bg-white w-full h-dvh flex justify-between'>
+    <div className='text-3xl ml-4 mt-3'>Entries</div>
+    <div>
+    <Link to='/addentry'>
+    <MdOutlineAddBox className='text-sky-500 text-4xl mr-6 mt-3'/>
+    </Link>
+    </div>
+    
+    </div>}
 
     
 
