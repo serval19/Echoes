@@ -6,11 +6,13 @@ import { useNavigate,Link } from 'react-router-dom'
 import axios from 'axios'
 import { ClimbingBoxLoader } from "react-spinners";
 import { MdOutlineAddBox } from 'react-icons/md'
+import  EntriesSingleCard  from '../components/entriessinglecard'
 
 
 function Home() {
   const navigate=useNavigate()
   const [loading,setLoading]=useState(false)
+  const [entries,setEntries]=useState([])
   useEffect(()=>{
       setLoading(true)
       const token=localStorage.getItem('jwtToken')
@@ -21,6 +23,7 @@ function Home() {
       })
       .then((response)=>{
         console.log(response.data.entries)
+        setEntries(response.data.entries)
         
       })
       .catch((err)=>{
@@ -56,15 +59,29 @@ function Home() {
 
     </div>
     { loading ?  <ClimbingBoxLoader color="#000000" size={20} className="mx-auto mt-20" /> : 
-    <div className='bg-white w-full h-dvh flex justify-between'>
-    <div className='text-3xl ml-4 mt-3'>Entries</div>
-    <div>
-    <Link to='/addentry'>
-    <MdOutlineAddBox className='text-sky-500 text-4xl mr-6 mt-3'/>
-    </Link>
-    </div>
-    
-    </div>}
+    (
+      <>
+        <div className='bg-white w-full  flex justify-between'>
+          <div className='text-3xl ml-4 mt-3'>Entries</div>
+          <div>
+            <Link to='/addentry'>
+              <MdOutlineAddBox className='text-sky-500 text-4xl mr-6 mt-3'/>
+            </Link>
+          </div>
+        </div>
+        <br/>
+        <div className='px-5'>
+          <div className='grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4'>
+          {entries.map((entry)=>( 
+            <EntriesSingleCard title={entry.title} createDate={entry.createdAt} id={entry._id} key={entry._id} />
+          ))}
+        </div>
+
+        </div>
+        
+      </>
+    )
+    }
 
     
 
