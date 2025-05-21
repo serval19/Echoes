@@ -73,7 +73,7 @@ function Home() {
         <div className='px-5'>
           <div className='grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4'>
           {entries.map((entry)=>( 
-            <EntriesSingleCard title={entry.title} createDate={entry.createdAt} id={entry._id} key={entry._id} />
+            <EntriesSingleCard title={entry.title} createDate={entry.createddate} id={entry._id} key={entry._id} />
           ))}
         </div>
 
