@@ -1,10 +1,10 @@
 import { Routes,Route, Navigate } from 'react-router-dom'
 import Login from './pages/login'
 import Signup from './pages/Signup'
-import Home from './pages/Home'
-import Addentry from './pages/Addentry'
-import Viewentry from './pages/Viewentry'
-import PrivateRoute  from './PrivateRoute'
+import Home from './pages/home'
+import Addentry from './pages/addentry'
+import Viewentry from './pages/viewentry'
+import PrivateRoute  from './privateRoute'
 import Deleteentry from './pages/Deleteentry'
 
 function App() {
