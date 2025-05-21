@@ -23,7 +23,7 @@ function Viewentry() {
 
   }
   else{
-    axios.get(`http://localhost:8080/entries/${id}`,{
+    axios.get(`https://echoes-two-olive.vercel.app/entries/${id}`,{
       headers:{
         'Authorization':token
       }

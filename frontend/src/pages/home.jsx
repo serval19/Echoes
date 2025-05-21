@@ -16,7 +16,7 @@ function Home() {
   useEffect(()=>{
       setLoading(true)
       const token=localStorage.getItem('jwtToken')
-      axios.get('http://localhost:8080/entries',{
+      axios.get('https://echoes-two-olive.vercel.app/entries',{
         headers:{
           'Authorization': token
         }

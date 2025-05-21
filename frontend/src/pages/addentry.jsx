@@ -22,7 +22,7 @@ function Addentry() {
     if (!title || !content) {
   return errormsg('Please fill all the fields');
   }
-  axios.post('http://localhost:8080/entries',data,{
+  axios.post('https://echoes-two-olive.vercel.app/entries',data,{
     headers:{
       'Authorization':token
     }

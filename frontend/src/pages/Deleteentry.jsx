@@ -22,7 +22,7 @@ function Deleteentry() {
         }
         else{
             setLoading(true)
-            axios.delete(`http://localhost:8080/entries/${id}`,{
+            axios.delete(`https://echoes-two-olive.vercel.app/entries/${id}`,{
                 headers:{
                     'Authorization': token
                 }

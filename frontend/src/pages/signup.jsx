@@ -20,7 +20,7 @@ function Signup() {
       password,
       name
     }
-    axios.post('http://localhost:8080/auth/signup',data)
+    axios.post('https://echoes-two-olive.vercel.app/auth/signup',data)
     
     .then((response)=>{
       successmsg('signup successful! Please login')

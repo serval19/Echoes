@@ -18,7 +18,7 @@ function Login() {
       email,
       password
     }
-    axios.post('http://localhost:8080/auth/login',data)
+    axios.post('https://echoes-two-olive.vercel.app/auth/login',data)
     
     .then((response)=>{
       successmsg('login successful!')
