@@ -39,7 +39,7 @@ const EntriesSingleCard = ({title,createDate,id}) => {
       </Link>
       
       
-        <Link >
+        <Link to={`/delete/${id}`}>
         <MdOutlineDelete className='text-2xl text-red-600 hover:text-black' />
            </Link>   
       

@@ -5,6 +5,7 @@ import Home from './pages/Home'
 import Addentry from './pages/Addentry'
 import Viewentry from './pages/Viewentry'
 import PrivateRoute  from './PrivateRoute'
+import Deleteentry from './pages/Deleteentry'
 
 function App() {
   
@@ -21,6 +22,7 @@ function App() {
         <Route path="/home" element={<PrivateRoute><Home /></PrivateRoute>} />
         <Route path="/addentry" element={<PrivateRoute><Addentry /></PrivateRoute>} />
         <Route path="/viewentry/:id" element={<PrivateRoute><Viewentry /></PrivateRoute>} />
+         <Route path="/delete/:id" element={<PrivateRoute><Deleteentry /></PrivateRoute>} />
       </Routes>
     </div>
     
