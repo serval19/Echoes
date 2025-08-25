@@ -3,7 +3,7 @@ import doodleart from '../assets/doodleart.jpg'
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import axios from 'axios'
-import { successmsg,errormsg  } from '../components/notification'
+import { successmsg,errormsg  } from '../components/Notification'
 import { ToastContainer } from 'react-toastify'
 
 function Login() {

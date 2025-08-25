@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link,useNavigate } from 'react-router-dom'
-import { successmsg,errormsg } from '../components/notification'
+import { successmsg,errormsg } from '../components/Notification'
 import { GrRevert } from 'react-icons/gr'
 import { ToastContainer } from 'react-toastify'
 import { useEffect,useState } from 'react'

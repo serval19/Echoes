@@ -1,12 +1,12 @@
 import React from 'react'
 import { useState,useEffect } from 'react'
 import doodleart from '../assets/doodleart.jpg'
-import { successmsg } from '../components/notification'
+import { successmsg } from '../components/Notification'
 import { useNavigate,Link } from 'react-router-dom'
 import axios from 'axios'
 import { ClimbingBoxLoader } from "react-spinners";
 import { MdOutlineAddBox } from 'react-icons/md'
-import  EntriesSingleCard  from '../components/entriessinglecard'
+import  EntriesSingleCard  from '../components/Entriessinglecard'
 
 
 function Home() {

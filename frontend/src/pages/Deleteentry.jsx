@@ -1,7 +1,7 @@
 import React from 'react'
 import { useState,useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { successmsg,errormsg } from '../components/notification'
+import { successmsg,errormsg } from '../components/Notification'
 import { useParams } from 'react-router-dom'
 import axios from 'axios'
 import { ClimbingBoxLoader } from "react-spinners";
